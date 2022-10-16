@@ -26,7 +26,7 @@ for x,y in enumerate(places):
     print("Paste in the address that's shown on google")
     full_address=input()
     name_with_address[y]=full_address
-fill_in_haha=haha="https://api.distancematrix.ai/maps/api/distancematrix/json?origins="
+fill_in="https://api.distancematrix.ai/maps/api/distancematrix/json?origins="
 
 for x,y in enumerate(places):
     if x==0:
@@ -35,8 +35,8 @@ for x,y in enumerate(places):
         address = name_with_address[y] + ", USA|"
     elif x==(len(places)-1):
         address=name_with_address[y]+",USA"
-    fill_in_haha+=address
-fill_in_haha+="&destinations="
+    fill_in+=address
+fill_in+="&destinations="
 for x, y in enumerate(places):
     if x == 0:
         address = name_with_address[y] + ", USA|"
@@ -44,12 +44,12 @@ for x, y in enumerate(places):
         address = name_with_address[y] + ", USA|"
     elif x == (len(places) - 1):
         address = name_with_address[y] + ",USA"
-    fill_in_haha += address
+    fill_in += address
 
-fill_in_haha+= "&key=" + API_key
-haha=fill_in_haha
-ok = requests.get(haha).json()
-print(ok)
+fill_in+= "&key=" + API_key
+url=fill_in
+ok = requests.get(url).json()
+
 u=ok['destination_addresses']
 destinations=ok['destination_addresses']
 origins = ok['origin_addresses']
@@ -61,10 +61,10 @@ for x in destinations:
     other_pairings[start]=x
     start+=1
 nodes={}
-poppy=ok['rows']
+rows=ok['rows']
 start=0
 end=0
-for x in poppy:
+for x in rows:
     ok=x['elements']
     end=0
     for o in ok:
