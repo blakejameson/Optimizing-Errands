@@ -3,7 +3,11 @@ import requests
 import creds
 import json
 import urllib
-API_key = creds.API_key
+
+# ** Below, you will need to paste in the API key you acquire from Distancematrix.ai
+API_key = ""
+
+
 results={}
 other=[]
 places=[]
